@@ -30,9 +30,15 @@ tiene dos jobs:
    `paginasestaticas/motogp` en GitHub Pages con
    `actions/upload-pages-artifact` + `actions/deploy-pages`.
 
-Para que el job `deploy` funcione, la primera vez hay que activar en
-GitHub **Settings → Pages → Build and deployment → Source: GitHub
-Actions** (una sola vez; los despliegues siguientes son automáticos).
+**Nota sobre la primera activación:** `GITHUB_TOKEN` nunca puede *crear*
+un sitio de Pages por primera vez (restricción de GitHub por diseño:
+solo un humano autenticado puede hacerlo, ni siquiera un PAT con todos
+los permisos correctos lo logró en las pruebas de este repo). El sitio
+se creó una única vez usando el asistente de GitHub en Settings →
+Pages → "Configure" sobre cualquier plantilla sugerida, confirmando el
+commit. A partir de ahí, `pages.yml` funciona con el `GITHUB_TOKEN` por
+defecto: cada push a `main` que pase el job `test` redeploya el
+contenido real de `paginasestaticas/motogp`.
 
 ## Resumen de correcciones aplicadas
 

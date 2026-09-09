@@ -74,15 +74,12 @@ jobs:
       - name: Descargar repositorio
         uses: actions/checkout@v4
 
-      # GITHUB_TOKEN nunca puede CREAR un sitio de Pages por primera vez
-      # (restricción de GitHub por diseño: solo un admin humano o un PAT
-      # con permiso "Pages: Read and write" pueden hacerlo). Por eso este
-      # paso usa el secret MOTOGP en vez del token por defecto.
+      # El sitio de Pages ya existe (se creó una vez desde la interfaz de
+      # GitHub, ya que GITHUB_TOKEN nunca puede crearlo por primera vez).
+      # A partir de aquí, leerlo/actualizarlo sí funciona con el token por
+      # defecto — no hace falta ningún PAT.
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
-        with:
-          token: ${{ secrets.MOTOGP }}
-          enablement: true
 
       - name: Subir artefacto del sitio (paginasestaticas/motogp)
         uses: actions/upload-pages-artifact@v3
