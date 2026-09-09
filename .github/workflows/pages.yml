@@ -77,11 +77,11 @@ jobs:
       # GITHUB_TOKEN nunca puede CREAR un sitio de Pages por primera vez
       # (restricción de GitHub por diseño: solo un admin humano o un PAT
       # con permiso "Pages: Read and write" pueden hacerlo). Por eso este
-      # paso usa el secret PAGES_DEPLOY_TOKEN en vez del token por defecto.
+      # paso usa el secret MOTOGP en vez del token por defecto.
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
         with:
-          token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          token: ${{ secrets.MOTOGP }}
           enablement: true
 
       - name: Subir artefacto del sitio (paginasestaticas/motogp)
