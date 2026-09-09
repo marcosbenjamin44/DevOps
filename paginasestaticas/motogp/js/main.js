@@ -163,9 +163,14 @@
     }
 
     items.forEach(function (item, index) {
-      item.addEventListener("click", function () {
-        openLightbox(index);
-      });
+      // La <figure> agrupa imagen + figcaption; el disparador es el <button>
+      // interno (un <button> no puede contener un <figure> — element-permitted-content).
+      var trigger = item.querySelector(".gallery-item-trigger");
+      if (trigger) {
+        trigger.addEventListener("click", function () {
+          openLightbox(index);
+        });
+      }
     });
 
     closeBtn.addEventListener("click", closeLightbox);
@@ -235,11 +240,12 @@
 
     if (nextRow) {
       nextRow.classList.add("is-next");
+      // ACC-006: sin aria-label (un <span> sin rol no admite nombre accesible
+      // por ARIA); el texto visible ya identifica el estado sin ambigüedad.
       var statusCell = nextRow.querySelector(".status-pill");
       if (statusCell) {
         statusCell.textContent = "Próxima";
         statusCell.className = "status-pill proximo";
-        statusCell.setAttribute("aria-label", "Estado: Próxima carrera");
       }
     }
   }

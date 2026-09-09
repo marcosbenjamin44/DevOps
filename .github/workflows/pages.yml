@@ -1,0 +1,84 @@
+name: CI y despliegue a GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "paginasestaticas/motogp/**"
+      - ".pa11yci.json"
+      - ".github/workflows/pages.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "paginasestaticas/motogp/**"
+      - ".pa11yci.json"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  test:
+    name: Pruebas (HTML5, enlaces internos, WCAG2AA)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: paginasestaticas/motogp
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Validar HTML5 semántico (html-validate)
+        run: npx --yes html-validate@8 index.html pilotos.html calendario.html galeria.html contacto.html
+
+      - name: Comprobar enlaces y recursos internos (lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: >-
+            --no-progress
+            --exclude 'motogp-fan-hub\.example\.com'
+            'paginasestaticas/motogp/**/*.html'
+          fail: true
+
+      - name: Servir el sitio y auditar accesibilidad WCAG2AA (pa11y-ci)
+        run: |
+          npx --yes http-server . -p 8080 -s &
+          npx --yes wait-on@7 http://localhost:8080/index.html
+          npx --yes pa11y-ci@3 --config ../../.pa11yci.json
+
+  deploy:
+    name: Publicar en GitHub Pages
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Subir artefacto del sitio (paginasestaticas/motogp)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: paginasestaticas/motogp
+
+      - name: Desplegar a GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

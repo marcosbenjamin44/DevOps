@@ -13,18 +13,18 @@
   <meta name="description" content="Sitio informativo sobre MotoGP: pilotos, calendario de carreras, galería de fotos y videos del Campeonato del Mundo de motociclismo." />
 
   <!-- SEC-012: URL canónica -->
-  <link rel="canonical" href="https://motogp-fan-hub.example.com/index.html" />
+  <link rel="canonical" href="https://marcosbenjamin44.github.io/DevOps/index.html" />
 
   <!-- SEO-001: Open Graph / Twitter Card -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="MotoGP Fan Hub — Inicio" />
   <meta property="og:description" content="Pilotos, calendario, galería y videos del Campeonato del Mundo de MotoGP." />
-  <meta property="og:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
-  <meta property="og:url" content="https://motogp-fan-hub.example.com/index.html" />
+  <meta property="og:image" content="https://marcosbenjamin44.github.io/DevOps/assets/img/hero-race.jpg" />
+  <meta property="og:url" content="https://marcosbenjamin44.github.io/DevOps/index.html" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="MotoGP Fan Hub — Inicio" />
   <meta name="twitter:description" content="Pilotos, calendario, galería y videos del Campeonato del Mundo de MotoGP." />
-  <meta name="twitter:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
+  <meta name="twitter:image" content="https://marcosbenjamin44.github.io/DevOps/assets/img/hero-race.jpg" />
 
   <!-- SEC-016 / SEC-020 -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
@@ -95,27 +95,31 @@
           adrenalina de la parrilla de MotoGP.
         </p>
 
-        <figure class="video-wrapper">
-          <!-- SEC-003: el iframe de YouTube no se carga hasta que el usuario
-               pulsa "Reproducir" (patrón facade), evitando peticiones a
-               terceros y permisos de sensores/portapapeles sin acción explícita. -->
-          <button
-            type="button"
-            class="video-facade"
-            data-video-id="wxfBR3cesis"
-            data-video-title="Video: Resumen oficial MotoGP, mejores momentos del Gran Premio de Holanda"
-            aria-label="Reproducir video: Resumen oficial MotoGP, Gran Premio de Holanda"
-          >
-            <span class="video-facade-play">
-              <span class="play-icon" aria-hidden="true">▶</span>
-              Reproducir video
-            </span>
-          </button>
+        <!-- figcaption solo se permite como hijo de figure; el recuadro de
+             16:9 vive en el <div> interior para no romper ese modelo de contenido -->
+        <figure class="video-figure">
+          <div class="video-wrapper">
+            <!-- SEC-003: el iframe de YouTube no se carga hasta que el usuario
+                 pulsa "Reproducir" (patrón facade), evitando peticiones a
+                 terceros y permisos de sensores/portapapeles sin acción explícita. -->
+            <button
+              type="button"
+              class="video-facade"
+              data-video-id="wxfBR3cesis"
+              data-video-title="Video: Resumen oficial MotoGP, mejores momentos del Gran Premio de Holanda"
+              aria-label="Reproducir video: Resumen oficial MotoGP, Gran Premio de Holanda"
+            >
+              <span class="video-facade-play">
+                <span class="play-icon" aria-hidden="true">▶</span>
+                Reproducir video
+              </span>
+            </button>
+          </div>
+          <figcaption class="video-caption">
+            Resumen oficial — Gran Premio de Holanda. Video incrustado bajo demanda
+            desde el canal oficial de MotoGP en YouTube.
+          </figcaption>
         </figure>
-        <figcaption class="video-caption">
-          Resumen oficial — Gran Premio de Holanda. Video incrustado bajo demanda
-          desde el canal oficial de MotoGP en YouTube.
-        </figcaption>
       </div>
     </section>
 

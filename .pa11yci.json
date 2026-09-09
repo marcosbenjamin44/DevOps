@@ -1,0 +1,16 @@
+{
+  "defaults": {
+    "standard": "WCAG2AA",
+    "timeout": 30000,
+    "chromeLaunchConfig": {
+      "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+    }
+  },
+  "urls": [
+    "http://localhost:8080/index.html",
+    "http://localhost:8080/pilotos.html",
+    "http://localhost:8080/calendario.html",
+    "http://localhost:8080/galeria.html",
+    "http://localhost:8080/contacto.html"
+  ]
+}

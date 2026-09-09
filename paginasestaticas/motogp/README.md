@@ -5,12 +5,34 @@ documenta las correcciones aplicadas a partir de `informe-auditoria-motogp.md`
 y las decisiones tomadas en los puntos donde el informe pedía "documentar"
 en lugar de un cambio de código.
 
+## Sitio publicado
+
+https://marcosbenjamin44.github.io/DevOps/
+
 ## Cómo probar localmente
 
 ```bash
 python3 -m http.server 8000
 # abrir http://localhost:8000/index.html
 ```
+
+## Integración continua (GitHub Actions)
+
+El workflow `.github/workflows/pages.yml` corre en cada push/PR a `main` y
+tiene dos jobs:
+
+1. **test** — valida el sitio antes de publicar nada:
+   - `html-validate` (HTML5/semántica, config en `.htmlvalidate.json`)
+   - `lychee` (enlaces y recursos internos rotos)
+   - `pa11y-ci` (accesibilidad WCAG2AA sobre las 5 páginas servidas
+     localmente, config en `.pa11yci.json`)
+2. **deploy** — solo si `test` pasa y el push fue a `main`: publica
+   `paginasestaticas/motogp` en GitHub Pages con
+   `actions/upload-pages-artifact` + `actions/deploy-pages`.
+
+Para que el job `deploy` funcione, la primera vez hay que activar en
+GitHub **Settings → Pages → Build and deployment → Source: GitHub
+Actions** (una sola vez; los despliegues siguientes son automáticos).
 
 ## Resumen de correcciones aplicadas
 
@@ -56,8 +78,26 @@ python3 -m http.server 8000
 - **ACC-003** El lightbox anuncia "Imagen X de N" (`aria-live="polite"`).
 - **ACC-004** Al enviar el formulario con errores, aparece un resumen con
   `role="alert"` que enlaza a cada campo inválido.
-- **ACC-006** Las "pills" de estado del calendario llevan
-  `aria-label="Estado: ..."`.
+- **ACC-006** Se evaluó `aria-label` en las "pills" de estado, pero
+  `html-validate` marcó `aria-label-misuse` (un `<span>` sin rol no admite
+  nombre accesible por ARIA). Como el texto visible ya identifica el
+  estado sin ambigüedad, se optó por no añadir el atributo.
+- **Contraste (detectado por pa11y-ci/WCAG2AA)** El asterisco de "campo
+  obligatorio" en el formulario tenía 3.21:1 sobre el fondo de la tarjeta
+  (`--color-primary` sobre `--color-surface`); se cambió al mismo rojo que
+  ya usan los mensajes de error (`#ff8a80`, 6.98:1).
+- **Modelo de contenido HTML5 (detectado por html-validate)**
+  - `galeria.html`: un `<button>` no puede contener un `<figure>`
+    (`element-permitted-content`). Se cambió a
+    `<figure class="gallery-item"><button class="gallery-item-trigger">…</button><figcaption>…</figcaption></figure>`.
+  - `index.html`: el `<figcaption>` del video estaba fuera del `<figure>`
+    que lo debía contener. Se envolvió el recuadro 16:9 en un `<div>`
+    dentro del `<figure>`, dejando el `<figcaption>` como su último hijo.
+  - `calendario.html`: `<div role="region">` se cambió por `<section>`
+    nativo (`prefer-native-element`).
+  - `galeria.html`: el `<img>` del lightbox tenía `src=""` (valor
+    inválido) antes de que JS lo rellenara. Ahora apunta a
+    `assets/img/placeholder.png` (PNG transparente de 1×1, 70 bytes).
 - **RES-001/RES-002** Los breakpoints de navegación, layout de contacto y
   pie de página se alinearon a 800px para una transición consistente en
   tablets.
@@ -81,9 +121,9 @@ python3 -m http.server 8000
   nonce generado por servidor o mover a un pipeline con hash de CSP.
 - **REND-002 (minificación)** El propio informe señala que es aceptable
   omitirla en un sitio educativo; se mantiene el código legible.
-- **Dominio canónico** `https://motogp-fan-hub.example.com/` es un
-  marcador de posición usado en `canonical`, Open Graph, `robots.txt` y
-  `sitemap.xml`. Debe reemplazarse por el dominio real al desplegar.
+- **Dominio canónico** `canonical`, Open Graph, `robots.txt` y
+  `sitemap.xml` apuntan a `https://marcosbenjamin44.github.io/DevOps/`,
+  la URL real de GitHub Pages para este repositorio.
 
 ## Créditos
 

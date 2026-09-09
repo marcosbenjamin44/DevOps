@@ -441,6 +441,10 @@ main section:nth-of-type(even) {
 /* =========================================================
    Video
    ========================================================= */
+.video-figure {
+  margin: 0;
+}
+
 .video-wrapper {
   position: relative;
   width: 100%;
@@ -520,14 +524,23 @@ main section:nth-of-type(even) {
   }
 }
 
+/* La <figure> agrupa imagen + figcaption (elemento no interactivo); el
+   <button> interno es el único disparador de clic/teclado — un <button>
+   no puede contener un <figure> (element-permitted-content). */
 .gallery-item {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-item-trigger {
+  display: block;
+  width: 100%;
   border: 0;
   padding: 0;
   background: none;
   cursor: pointer;
-  border-radius: var(--radius);
-  overflow: hidden;
-  position: relative;
 }
 
 .gallery-item img {
@@ -537,8 +550,8 @@ main section:nth-of-type(even) {
   transition: transform var(--transition);
 }
 
-.gallery-item:hover img,
-.gallery-item:focus-visible img {
+.gallery-item-trigger:hover img,
+.gallery-item-trigger:focus-visible img {
   transform: scale(1.06);
 }
 
@@ -747,7 +760,9 @@ main section:nth-of-type(even) {
 }
 
 .required-mark {
-  color: var(--color-primary);
+  /* --color-primary da 3.21:1 sobre --color-surface (falla WCAG AA 4.5:1);
+     se usa el mismo rojo ya validado en .form-error (6.98:1). */
+  color: #ff8a80;
 }
 
 .form-field input,

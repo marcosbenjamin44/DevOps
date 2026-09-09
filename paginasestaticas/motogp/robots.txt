@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://motogp-fan-hub.example.com/sitemap.xml
+Sitemap: https://marcosbenjamin44.github.io/DevOps/sitemap.xml
