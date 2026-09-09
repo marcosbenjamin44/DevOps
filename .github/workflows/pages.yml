@@ -41,12 +41,15 @@ jobs:
       - name: Validar HTML5 semántico (html-validate)
         run: npx --yes html-validate@8 index.html pilotos.html calendario.html galeria.html contacto.html
 
+      # Se excluye el propio dominio de GitHub Pages: apunta a este mismo
+      # sitio (canonical/Open Graph) y aún no existe en el primer deploy,
+      # lo que crearía una dependencia circular con el job "deploy".
       - name: Comprobar enlaces y recursos internos (lychee)
         uses: lycheeverse/lychee-action@v2
         with:
           args: >-
             --no-progress
-            --exclude 'motogp-fan-hub\.example\.com'
+            --exclude 'marcosbenjamin44\.github\.io'
             'paginasestaticas/motogp/**/*.html'
           fail: true
 
