@@ -36,7 +36,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "22"
 
       - name: Validar HTML5 semántico (html-validate)
         run: npx --yes html-validate@8 index.html pilotos.html calendario.html galeria.html contacto.html
@@ -76,6 +76,11 @@ jobs:
 
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
+        with:
+          # El sitio de Pages aún no existía a nivel de API aunque el
+          # desplegable de Settings mostrara "GitHub Actions"; se fuerza
+          # la creación automática en el primer despliegue.
+          enablement: true
 
       - name: Subir artefacto del sitio (paginasestaticas/motogp)
         uses: actions/upload-pages-artifact@v3
