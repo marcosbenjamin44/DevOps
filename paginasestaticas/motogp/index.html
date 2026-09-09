@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEC-001: Content-Security-Policy — solo recursos propios y el iframe oficial de YouTube -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <!-- SEC-010: restringe el acceso a APIs sensibles del navegador -->
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
+
+  <title>MotoGP Fan Hub — Inicio</title>
+  <meta name="description" content="Sitio informativo sobre MotoGP: pilotos, calendario de carreras, galería de fotos y videos del Campeonato del Mundo de motociclismo." />
+
+  <!-- SEC-012: URL canónica -->
+  <link rel="canonical" href="https://motogp-fan-hub.example.com/index.html" />
+
+  <!-- SEO-001: Open Graph / Twitter Card -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MotoGP Fan Hub — Inicio" />
+  <meta property="og:description" content="Pilotos, calendario, galería y videos del Campeonato del Mundo de MotoGP." />
+  <meta property="og:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
+  <meta property="og:url" content="https://motogp-fan-hub.example.com/index.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MotoGP Fan Hub — Inicio" />
+  <meta name="twitter:description" content="Pilotos, calendario, galería y videos del Campeonato del Mundo de MotoGP." />
+  <meta name="twitter:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
+
+  <!-- SEC-016 / SEC-020 -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- SEC-014: precarga de recursos críticos para el LCP -->
+  <link rel="preload" href="css/styles.css" as="style" />
+  <link rel="preload" href="assets/img/hero-race.webp" as="image" type="image/webp" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <span class="logo-flag" aria-hidden="true">🏁</span>
+        MotoGP Fan Hub
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav-list"
+        aria-label="Abrir menú de navegación"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list" id="primary-nav-list">
+          <li><a href="index.html" aria-current="page">Inicio</a></li>
+          <li><a href="pilotos.html">Pilotos</a></li>
+          <li><a href="calendario.html">Calendario</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">Campeonato del Mundo de MotoGP</p>
+        <h1 id="hero-heading">La velocidad, la pasión y la técnica sobre dos ruedas</h1>
+        <p>
+          Descubre a los pilotos, revive las carreras, consulta el calendario oficial
+          y explora la galería de imágenes del campeonato de motociclismo más
+          emocionante del mundo.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="calendario.html">Ver calendario de carreras</a>
+          <a class="btn btn-outline" href="pilotos.html">Conocer a los pilotos</a>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="video-heading">
+      <div class="container">
+        <h2 class="section-heading" id="video-heading">Lo mejor de la temporada</h2>
+        <p class="section-subtitle">
+          Mira el resumen oficial de uno de los últimos Grandes Premios y siente la
+          adrenalina de la parrilla de MotoGP.
+        </p>
+
+        <figure class="video-wrapper">
+          <!-- SEC-003: el iframe de YouTube no se carga hasta que el usuario
+               pulsa "Reproducir" (patrón facade), evitando peticiones a
+               terceros y permisos de sensores/portapapeles sin acción explícita. -->
+          <button
+            type="button"
+            class="video-facade"
+            data-video-id="wxfBR3cesis"
+            data-video-title="Video: Resumen oficial MotoGP, mejores momentos del Gran Premio de Holanda"
+            aria-label="Reproducir video: Resumen oficial MotoGP, Gran Premio de Holanda"
+          >
+            <span class="video-facade-play">
+              <span class="play-icon" aria-hidden="true">▶</span>
+              Reproducir video
+            </span>
+          </button>
+        </figure>
+        <figcaption class="video-caption">
+          Resumen oficial — Gran Premio de Holanda. Video incrustado bajo demanda
+          desde el canal oficial de MotoGP en YouTube.
+        </figcaption>
+      </div>
+    </section>
+
+    <section aria-labelledby="highlights-heading">
+      <div class="container">
+        <h2 class="section-heading" id="highlights-heading">Momentos destacados</h2>
+        <p class="section-subtitle">
+          Instantáneas de acción real capturadas en distintos circuitos del mundial.
+        </p>
+
+        <div class="card-grid">
+          <article class="card">
+            <picture>
+              <source srcset="assets/img/race-sachsenring2010.webp" type="image/webp" />
+              <img
+                src="assets/img/race-sachsenring2010.jpg"
+                alt="Grupo de motos de MotoGP inclinadas en una curva durante la carrera en el circuito de Sachsenring, 2010"
+                loading="lazy"
+                width="1280"
+                height="960"
+              />
+            </picture>
+            <div class="card-body">
+              <h3>Sachsenring 2010</h3>
+              <p>
+                Duelo de neumáticos al límite en una de las curvas más rápidas y
+                exigentes del calendario alemán.
+              </p>
+              <div class="card-meta">
+                <span class="badge">Alemania</span>
+                <span class="badge">Circuito</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <picture>
+              <source srcset="assets/img/race-indianapolis2008.webp" type="image/webp" />
+              <img
+                src="assets/img/race-indianapolis2008.jpg"
+                alt="Vuelta de apertura del Gran Premio de MotoGP en Indianápolis, 2008, con varios pilotos en formación cerrada"
+                loading="lazy"
+                width="1280"
+                height="720"
+              />
+            </picture>
+            <div class="card-body">
+              <h3>Indianápolis 2008</h3>
+              <p>
+                La salida define la carrera: la vuelta de apertura reordena la
+                parrilla en cuestión de segundos.
+              </p>
+              <div class="card-meta">
+                <span class="badge">Estados Unidos</span>
+                <span class="badge">Salida</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <picture>
+              <source srcset="assets/img/hero-race.webp" type="image/webp" />
+              <img
+                src="assets/img/hero-race.jpg"
+                alt="Bandera roja ondeando para detener una carrera de MotoGP por motivos de seguridad"
+                loading="lazy"
+                width="1280"
+                height="960"
+              />
+            </picture>
+            <div class="card-body">
+              <h3>Bandera roja</h3>
+              <p>
+                La seguridad primero: así se detiene oficialmente una carrera cuando
+                las condiciones lo requieren.
+              </p>
+              <div class="card-meta">
+                <span class="badge">Reglamento</span>
+                <span class="badge">Seguridad</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section aria-labelledby="why-heading">
+      <div class="container">
+        <h2 class="section-heading" id="why-heading">¿Por qué seguir MotoGP?</h2>
+        <p class="section-subtitle">
+          Cuatro razones por las que millones de aficionados no se pierden ni un
+          Gran Premio.
+        </p>
+
+        <ul class="fact-list">
+          <li>
+            <span class="fact-icon" aria-hidden="true">🏍️</span>
+            <div>
+              <h3>Tecnología de punta</h3>
+              <p>
+                Motos capaces de superar los 350 km/h construidas con materiales de
+                competición y electrónica avanzada.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="fact-icon" aria-hidden="true">🌍</span>
+            <div>
+              <h3>Calendario mundial</h3>
+              <p>
+                Más de 20 Grandes Premios disputados en circuitos icónicos de todos
+                los continentes.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="fact-icon" aria-hidden="true">🏆</span>
+            <div>
+              <h3>Historia y leyendas</h3>
+              <p>
+                Décadas de rivalidades legendarias entre pilotos que marcaron época
+                en el motociclismo.
+              </p>
+            </div>
+          </li>
+          <li>
+            <span class="fact-icon" aria-hidden="true">📷</span>
+            <div>
+              <h3>Espectáculo visual</h3>
+              <p>
+                Cada curva es una fotografía: adelantamientos al límite y estrategias
+                de neumáticos.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h2>MotoGP Fan Hub</h2>
+          <p>
+            Sitio estático de aficionados con fines educativos e informativos sobre
+            el Campeonato del Mundo de MotoGP.
+          </p>
+        </div>
+        <nav aria-label="Enlaces del pie de página">
+          <h2>Explorar</h2>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="pilotos.html">Pilotos</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Créditos de imágenes</h2>
+          <ul>
+            <li>Fotografías: Wikimedia Commons (licencias libres)</li>
+            <li>Video: canal oficial de MotoGP en YouTube</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> MotoGP Fan Hub. Proyecto educativo sin fines comerciales.</p>
+        <p>MotoGP® es una marca registrada de Dorna Sports. Este sitio no está afiliado oficialmente.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" aria-label="Volver al inicio de la página">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

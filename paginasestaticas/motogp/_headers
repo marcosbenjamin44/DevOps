@@ -1,0 +1,11 @@
+# Cabeceras de seguridad para hosting estático compatible con el formato
+# "_headers" de Netlify (SEC-004 del informe de auditoría).
+# La Content-Security-Policy principal ya se define via <meta> en cada HTML;
+# aquí se añaden cabeceras que solo pueden establecerse a nivel de servidor.
+
+/*
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload

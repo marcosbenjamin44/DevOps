@@ -1,0 +1,19 @@
+{
+  "name": "MotoGP Fan Hub",
+  "short_name": "MotoGP Hub",
+  "description": "Sitio informativo sobre MotoGP: pilotos, calendario, galería y videos.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0e0f12",
+  "theme_color": "#e10600",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

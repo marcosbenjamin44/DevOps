@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
+
+  <title>MotoGP Fan Hub — Galería</title>
+  <meta name="description" content="Galería de fotografías de MotoGP: motos, pilotos y momentos de carrera, con visor ampliado accesible." />
+
+  <link rel="canonical" href="https://motogp-fan-hub.example.com/galeria.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MotoGP Fan Hub — Galería" />
+  <meta property="og:description" content="Fotografías de motos, pilotos y momentos de carrera de MotoGP con visor ampliado accesible." />
+  <meta property="og:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
+  <meta property="og:url" content="https://motogp-fan-hub.example.com/galeria.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MotoGP Fan Hub — Galería" />
+  <meta name="twitter:description" content="Fotografías de motos, pilotos y momentos de carrera de MotoGP con visor ampliado accesible." />
+  <meta name="twitter:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="preload" href="css/styles.css" as="style" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <span class="logo-flag" aria-hidden="true">🏁</span>
+        MotoGP Fan Hub
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav-list"
+        aria-label="Abrir menú de navegación"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list" id="primary-nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pilotos.html">Pilotos</a></li>
+          <li><a href="calendario.html">Calendario</a></li>
+          <li><a href="galeria.html" aria-current="page">Galería</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="page-hero">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Inicio</a></li>
+          <li aria-current="page">Galería</li>
+        </ol>
+        <h1>Galería de fotos</h1>
+        <p class="section-subtitle">
+          Haz clic o pulsa Enter sobre cualquier fotografía para ampliarla. Dentro
+          del visor puedes usar las flechas izquierda/derecha del teclado para
+          navegar y Escape para cerrar.
+        </p>
+      </div>
+    </div>
+
+    <section aria-labelledby="gallery-heading">
+      <div class="container">
+        <h2 class="visually-hidden" id="gallery-heading">Fotografías de MotoGP</h2>
+
+        <div class="gallery-grid">
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/hero-race.webp" type="image/webp" />
+                <img
+                  src="assets/img/hero-race.jpg"
+                  alt="Bandera roja ondeando junto a la pista para detener una carrera de MotoGP"
+                  loading="lazy"
+                  width="1280"
+                  height="960"
+                />
+              </picture>
+              <figcaption>Bandera roja — final anticipado de carrera</figcaption>
+            </figure>
+          </button>
+
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/bike-ktm.webp" type="image/webp" />
+                <img
+                  src="assets/img/bike-ktm.jpg"
+                  alt="Motocicleta KTM RC16 de MotoGP en exhibición estática"
+                  loading="lazy"
+                  width="1280"
+                  height="857"
+                />
+              </picture>
+              <figcaption>KTM RC16 — moto de fábrica</figcaption>
+            </figure>
+          </button>
+
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/bike-suzuki.webp" type="image/webp" />
+                <img
+                  src="assets/img/bike-suzuki.jpg"
+                  alt="Motocicleta Suzuki GSX-RR de MotoGP, edición 2017"
+                  loading="lazy"
+                  width="1280"
+                  height="857"
+                />
+              </picture>
+              <figcaption>Suzuki GSX-RR — temporada 2017</figcaption>
+            </figure>
+          </button>
+
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/race-sachsenring2010.webp" type="image/webp" />
+                <img
+                  src="assets/img/race-sachsenring2010.jpg"
+                  alt="Grupo de pilotos de MotoGP inclinados en una curva del circuito de Sachsenring, 2010"
+                  loading="lazy"
+                  width="1280"
+                  height="960"
+                />
+              </picture>
+              <figcaption>Sachsenring 2010 — batalla en curva</figcaption>
+            </figure>
+          </button>
+
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/race-sachsenring2014.webp" type="image/webp" />
+                <img
+                  src="assets/img/race-sachsenring2014.jpg"
+                  alt="Pilotos de MotoGP compitiendo en el circuito de Sachsenring durante la edición de 2014"
+                  loading="lazy"
+                  width="1280"
+                  height="853"
+                />
+              </picture>
+              <figcaption>Sachsenring 2014 — ritmo de carrera</figcaption>
+            </figure>
+          </button>
+
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/race-indianapolis2008.webp" type="image/webp" />
+                <img
+                  src="assets/img/race-indianapolis2008.jpg"
+                  alt="Vuelta de apertura del Gran Premio de MotoGP en Indianápolis, 2008"
+                  loading="lazy"
+                  width="1280"
+                  height="720"
+                />
+              </picture>
+              <figcaption>Indianápolis 2008 — vuelta de apertura</figcaption>
+            </figure>
+          </button>
+
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/rider-pedrosa.webp" type="image/webp" />
+                <img
+                  src="assets/img/rider-pedrosa.jpg"
+                  alt="Dani Pedrosa con la equipación del equipo Repsol Honda en el paddock, 2015"
+                  loading="lazy"
+                  width="1280"
+                  height="866"
+                />
+              </picture>
+              <figcaption>Dani Pedrosa — paddock 2015</figcaption>
+            </figure>
+          </button>
+
+          <button type="button" class="gallery-item">
+            <figure>
+              <picture>
+                <source srcset="assets/img/rider-melandri.webp" type="image/webp" />
+                <img
+                  src="assets/img/rider-melandri.jpg"
+                  alt="Marco Melandri posando con su equipación de carreras, 2015"
+                  loading="lazy"
+                  width="1280"
+                  height="872"
+                />
+              </picture>
+              <figcaption>Marco Melandri — temporada 2015</figcaption>
+            </figure>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Visor modal (lightbox) accesible -->
+  <div
+    class="lightbox"
+    id="lightbox"
+    hidden
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="lightbox-caption"
+  >
+    <div class="lightbox-content">
+      <button type="button" class="lightbox-close" aria-label="Cerrar visor de imagen">
+        <span aria-hidden="true">&times;</span>
+      </button>
+      <img class="lightbox-image" src="" alt="" />
+      <p class="lightbox-caption" id="lightbox-caption"></p>
+      <div class="lightbox-nav">
+        <button type="button" class="btn btn-outline lightbox-prev">
+          ← Anterior
+        </button>
+        <!-- ACC-003: posición actual, anunciada a lectores de pantalla -->
+        <p class="lightbox-position" aria-live="polite"></p>
+        <button type="button" class="btn btn-outline lightbox-next">
+          Siguiente →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h2>MotoGP Fan Hub</h2>
+          <p>
+            Sitio estático de aficionados con fines educativos e informativos sobre
+            el Campeonato del Mundo de MotoGP.
+          </p>
+        </div>
+        <nav aria-label="Enlaces del pie de página">
+          <h2>Explorar</h2>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="pilotos.html">Pilotos</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Créditos de imágenes</h2>
+          <ul>
+            <li>Fotografías: Wikimedia Commons (licencias libres)</li>
+            <li>Video: canal oficial de MotoGP en YouTube</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> MotoGP Fan Hub. Proyecto educativo sin fines comerciales.</p>
+        <p>MotoGP® es una marca registrada de Dorna Sports. Este sitio no está afiliado oficialmente.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" aria-label="Volver al inicio de la página">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>

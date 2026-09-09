@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://motogp-fan-hub.example.com/sitemap.xml

@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; frame-src https://www.youtube-nocookie.com; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), interest-cohort=()" />
+
+  <title>MotoGP Fan Hub — Contacto</title>
+  <meta name="description" content="Formulario de contacto accesible para enviar consultas o comentarios sobre el sitio MotoGP Fan Hub." />
+
+  <link rel="canonical" href="https://motogp-fan-hub.example.com/contacto.html" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MotoGP Fan Hub — Contacto" />
+  <meta property="og:description" content="Envía tus consultas o comentarios sobre MotoGP Fan Hub." />
+  <meta property="og:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
+  <meta property="og:url" content="https://motogp-fan-hub.example.com/contacto.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="MotoGP Fan Hub — Contacto" />
+  <meta name="twitter:description" content="Envía tus consultas o comentarios sobre MotoGP Fan Hub." />
+  <meta name="twitter:image" content="https://motogp-fan-hub.example.com/assets/img/hero-race.jpg" />
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="manifest" href="manifest.json" />
+
+  <link rel="preload" href="css/styles.css" as="style" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="container navbar">
+      <a href="index.html" class="logo">
+        <span class="logo-flag" aria-hidden="true">🏁</span>
+        MotoGP Fan Hub
+      </a>
+
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav-list"
+        aria-label="Abrir menú de navegación"
+      >
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <ul class="nav-list" id="primary-nav-list">
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="pilotos.html">Pilotos</a></li>
+          <li><a href="calendario.html">Calendario</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <div class="page-hero">
+      <div class="container">
+        <ol class="breadcrumb">
+          <li><a href="index.html">Inicio</a></li>
+          <li aria-current="page">Contacto</li>
+        </ol>
+        <h1>Contacto</h1>
+        <p class="section-subtitle">
+          ¿Tienes dudas, sugerencias o comentarios sobre el sitio? Escríbenos con el
+          siguiente formulario.
+        </p>
+      </div>
+    </div>
+
+    <section aria-labelledby="contact-heading">
+      <div class="container">
+        <h2 class="visually-hidden" id="contact-heading">Formulario de contacto</h2>
+
+        <div class="contact-layout">
+          <!--
+            SEC-002: se eliminó "novalidate" para que la validación nativa
+            del navegador actúe como primera capa; el JavaScript añade
+            mensajes de error accesibles y personalizados por encima.
+            SEC-009: este formulario es una demo sin backend; si se conecta
+            a un servidor, debe incorporar un token CSRF y repetir toda
+            esta validación en el lado del servidor (SEC-002).
+          -->
+          <form class="contact-form" id="contact-form">
+            <p id="form-required-note" class="form-hint">
+              Los campos marcados con <span class="required-mark" aria-hidden="true">*</span>
+              (<span class="visually-hidden">obligatorio</span>) son obligatorios.
+            </p>
+
+            <div
+              class="form-status"
+              id="form-status"
+              role="status"
+              tabindex="-1"
+              hidden
+            ></div>
+
+            <!-- ACC-004: resumen de errores anunciado al fallar el envío -->
+            <div
+              class="form-error-summary"
+              id="form-error-summary"
+              role="alert"
+              tabindex="-1"
+              hidden
+            >
+              <h2>Revisa los siguientes campos</h2>
+              <ul id="form-error-list"></ul>
+            </div>
+
+            <div class="form-field">
+              <label for="full-name">
+                Nombre completo <span class="required-mark" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="text"
+                id="full-name"
+                name="full-name"
+                required
+                minlength="2"
+                aria-describedby="full-name-error"
+                aria-invalid="false"
+              />
+              <p class="form-error" id="full-name-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="email">
+                Correo electrónico <span class="required-mark" aria-hidden="true">*</span>
+              </label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                aria-describedby="email-error"
+                aria-invalid="false"
+              />
+              <p class="form-error" id="email-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="subject">
+                Asunto <span class="required-mark" aria-hidden="true">*</span>
+              </label>
+              <select id="subject" name="subject" required aria-describedby="subject-error" aria-invalid="false">
+                <option value="">Selecciona una opción</option>
+                <option value="Consulta general">Consulta general</option>
+                <option value="Sugerencia de contenido">Sugerencia de contenido</option>
+                <option value="Reporte de error">Reporte de error en el sitio</option>
+                <option value="Otro">Otro</option>
+              </select>
+              <p class="form-error" id="subject-error" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label for="message">
+                Mensaje <span class="required-mark" aria-hidden="true">*</span>
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                minlength="10"
+                aria-describedby="message-error"
+                aria-invalid="false"
+              ></textarea>
+              <p class="form-error" id="message-error" aria-live="polite"></p>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+            <p class="form-hint">
+              Este formulario es una demostración: no envía datos a ningún servidor.
+            </p>
+          </form>
+
+          <aside aria-labelledby="info-heading">
+            <h2 class="section-heading aside-heading" id="info-heading">
+              Otras formas de mantenerte al día
+            </h2>
+            <ul class="fact-list">
+              <li>
+                <span class="fact-icon" aria-hidden="true">📅</span>
+                <div>
+                  <h3>Calendario</h3>
+                  <p>Consulta las fechas de los próximos Grandes Premios en la sección <a href="calendario.html">Calendario</a>.</p>
+                </div>
+              </li>
+              <li>
+                <span class="fact-icon" aria-hidden="true">🏍️</span>
+                <div>
+                  <h3>Pilotos</h3>
+                  <p>Descubre más sobre los protagonistas del campeonato en la sección <a href="pilotos.html">Pilotos</a>.</p>
+                </div>
+              </li>
+              <li>
+                <span class="fact-icon" aria-hidden="true">🖼️</span>
+                <div>
+                  <h3>Galería</h3>
+                  <p>Explora imágenes de carrera en la <a href="galeria.html">Galería</a> del sitio.</p>
+                </div>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h2>MotoGP Fan Hub</h2>
+          <p>
+            Sitio estático de aficionados con fines educativos e informativos sobre
+            el Campeonato del Mundo de MotoGP.
+          </p>
+        </div>
+        <nav aria-label="Enlaces del pie de página">
+          <h2>Explorar</h2>
+          <ul>
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="pilotos.html">Pilotos</a></li>
+            <li><a href="calendario.html">Calendario</a></li>
+            <li><a href="galeria.html">Galería</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+          </ul>
+        </nav>
+        <div>
+          <h2>Créditos de imágenes</h2>
+          <ul>
+            <li>Fotografías: Wikimedia Commons (licencias libres)</li>
+            <li>Video: canal oficial de MotoGP en YouTube</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> MotoGP Fan Hub. Proyecto educativo sin fines comerciales.</p>
+        <p>MotoGP® es una marca registrada de Dorna Sports. Este sitio no está afiliado oficialmente.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button type="button" class="back-to-top" aria-label="Volver al inicio de la página">
+    <span aria-hidden="true">↑</span>
+  </button>
+
+  <script src="js/main.js" defer></script>
+</body>
+</html>
